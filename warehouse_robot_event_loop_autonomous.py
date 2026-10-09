@@ -3,7 +3,7 @@
 Event-driven self-healing prototype: autonomous mobile robots (AMRs) meeting obstacles
 in a fulfilment warehouse.
 
-Components (mapped to the paper's blueprint):
+Components (mapped to the paper's architecture):
   EventBroker       - in-memory pub/sub with schema validation on every publish
   AnalyticalLoop    - deterministic rule-table state machine (the edge fast path)
   MockLLMHealer     - stand-in for the Generative Optimization Engine: diagnoses a

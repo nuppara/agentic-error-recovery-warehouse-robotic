@@ -1,13 +1,13 @@
-# Event-driven self-healing blueprint: simulation code
+# Event-driven self-healing architecture: simulation code
 
 Code and result files for the paper
 
-> N. Akkuledu Uppara, "An Event-Driven Agentic AI Blueprint for Autonomous Error Recovery
+> N. Akkuledu Uppara, "An Event-Driven Agentic AI Architecture for Autonomous Error Recovery
 > and Self-Evolution in Goal-Oriented Embodied Warehouse Robots," submitted to the
 > 19th IEEE MCSoC 2026 (EmbodiCore, track T6).
 
 The simulation is a discrete-event model on a virtual clock. It illustrates the control flow of the
-blueprint: a deterministic rule-table loop on the robot, a fault event for anything the table does
+architecture: a deterministic rule-table loop on the robot, a fault event for anything the table does
 not cover, an off-board generative engine that proposes a fix, and installation of an accepted fix
 as a new rule.
 
