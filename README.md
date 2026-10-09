@@ -18,6 +18,10 @@ The design places computing in three tiers. Tier 1 is the robot, which runs a de
 
 ![Architecture components and the fault-to-patch event flow](docs/Fig1_architecture.png)
 
+The paper describes the components as three agent roles. The execution agent is the Analytical Execution Loop on each robot (class `AnalyticalLoop`). The recovery agent is the Generative Optimization Engine on the on-site edge server, and the evaluation agent is the evaluation loop that checks its proposals (both inside class `MockLLMHealer`, which is a mock and does not call a real language model). The on-robot monitor is a deterministic guard, not an agent, and appears in the simulation only as a catch probability.
+
+All robots in the simulation share one rule table, so a rule learned from one robot's fault applies to the whole fleet at once. The patch is carried in the `heal.result` message.
+
 **This repository contains the simulation only. The technologies below describe a possible deployment. None of them is implemented or used here; the code uses only the Python standard library.**
 
 | Component | Candidate technology | In this repository |
@@ -28,7 +32,7 @@ The design places computing in three tiers. Tier 1 is the robot, which runs a de
 | Event broker and messages | Apache Kafka or an MQTT broker; Protocol Buffers schemas | In-memory broker; JSON with the same checks |
 | Tier 2 generative engine | Quantized 7- to 8-billion-parameter language model on an edge accelerator such as an NVIDIA Jetson, or on a server GPU | Mock engine |
 | Tier 3 escalation | Larger cloud-hosted model, for example a vision-language-action model | Not evaluated |
-| Safety monitor | Deterministic checks on the robot's safety controller | Catch probability only |
+| On-robot monitor | Deterministic checks on the robot's safety controller | Catch probability only |
 
 ## Reproduce the paper
 
